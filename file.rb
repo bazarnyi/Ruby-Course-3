@@ -8,4 +8,4 @@ def add(a, b)
   end
 end
 
-add 1, 15
+add 1, 10

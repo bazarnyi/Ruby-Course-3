@@ -1,5 +1,11 @@
 require 'selenium-webdriver'
 require 'capybara/rspec'
+require 'require_all'
+require 'site_prism'
+
+require_all 'page_objects/sections'
+require_all 'page_objects/pages'
+
 
 RSpec.configure do |config|
   def options

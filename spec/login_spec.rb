@@ -1,6 +1,6 @@
 feature 'User login', js: true do
   scenario 'User can login to the system' do
-    login_user 'uitestuser', 'testpassword123'
+    login_user ENV['USERNAME'], ENV['PASSWORD']
     expect(page).to have_content 'Welcome to GitLab'
 
     @home_page = HomePage.new

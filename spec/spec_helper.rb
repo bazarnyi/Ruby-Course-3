@@ -1,6 +1,7 @@
-require 'selenium-webdriver'
+require 'dotenv/load'
 require 'capybara/rspec'
 require 'require_all'
+require 'selenium-webdriver'
 require 'site_prism'
 
 require_all 'page_objects/sections'

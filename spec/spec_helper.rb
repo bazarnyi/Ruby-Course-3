@@ -5,7 +5,9 @@ require 'site_prism'
 
 require_all 'page_objects/sections'
 require_all 'page_objects/pages'
+require_all 'modules'
 
+include Helpers
 
 RSpec.configure do |config|
   def options

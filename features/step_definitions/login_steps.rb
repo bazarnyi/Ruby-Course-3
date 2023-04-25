@@ -3,6 +3,8 @@ Given(/^User is created via API$/) do
 
   response = create_user_api @new_user
   @user_id = JSON.parse(response.body)['id']
+
+  expect(response.code).to eq 201
 end
 
 When(/^I login to GitLab$/) do

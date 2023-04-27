@@ -12,7 +12,7 @@ require_all 'page_objects/pages'
 require_all 'modules'
 
 def chrome_options
-  Selenium::WebDriver::Chrome::Options.new(args: %w[window-size=1800,1000, '--no-sandbox', '--headless', '--disable-dev-shm-usage'])
+  Selenium::WebDriver::Chrome::Options.new(args: %w[window-size=1800,1000 --no-sandbox --headless --disable-dev-shm-usage])
 end
 
 Before do

@@ -1,19 +1,26 @@
+# frozen_string_literal: true
+
+require 'dotenv/load'
 require 'selenium-webdriver'
 require 'capybara/rspec'
 require 'require_all'
+require 'rest-client'
 require 'site_prism'
 
 require_all 'page_objects/sections'
 require_all 'page_objects/pages'
+require_all 'modules'
 
+include Helpers
+include ApiWrappers
 
-RSpec.configure do |config|
+RSpec.configure do |_config|
   def options
     Selenium::WebDriver::Chrome::Options.new(args: %w[window-size=1800,1000])
   end
 
   Capybara.default_driver = :selenium
   Capybara.register_driver :selenium do |app|
-    Capybara::Selenium::Driver.new(app, browser: :chrome, options: options)
+    Capybara::Selenium::Driver.new(app, browser: :chrome, options:)
   end
 end

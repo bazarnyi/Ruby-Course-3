@@ -1,17 +1,21 @@
+# frozen_string_literal: true
+
 feature 'User login', js: true do
   scenario 'User can login to the system' do
-    @login_page = LoginPage.new
-    @login_page.load
+    new_user = User.new
 
-    @login_page.login_field.set 'uitestuser'
-    @login_page.password_field.set 'testpassword123'
-    @login_page.submit_button.click
+    response = create_user_api new_user
+    user_id = JSON.parse(response.body)['id']
 
+    login_user new_user.username, new_user.password
     expect(page).to have_content 'Welcome to GitLab'
 
     @home_page = HomePage.new
     @home_page.menu.user_picture.click
 
-    expect(@home_page.menu.user_name).to have_content 'Test User'
+    expect(@home_page.menu.user_name).to have_content new_user.firstname
+    expect(@home_page.menu.user_name).to have_content new_user.lastname
+
+    delete_user_api(user_id)
   end
 end
